@@ -84,5 +84,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ```
 cd /opt
-sudo git@github.com:cybergate-services/nextcloud.git
-cd nextcloud
+https://github.com/cybergate-services/docker-odoo.git
+cd docker-odoo
+docker-compose up -d
+```
