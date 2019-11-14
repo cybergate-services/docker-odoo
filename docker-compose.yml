@@ -5,9 +5,9 @@ services:
     container_name: postgresql
     hostname: postgresql
     environment:
-      - ALLOW_EMPTY_PASSWORD=no
+      - ALLOW_EMPTY_PASSWORD=yes
     volumes:
-      - 'postgresql_data:/bitnami/postgresql'
+      - './postgresql_data:/bitnami/postgresql'
     restart: always
     
 volumes:
@@ -19,12 +19,11 @@ volumes:
       - '80:8069'
       - '443:8071'
     volumes:
-      - 'odoo_data:/bitnami'
+      - './odoo_data:/bitnami'
     environment:
       - ODOO_EMAIL=odoo@openemail.io
       - ODOO_PASSWORD=odoo@cybergate
       - POSTGRESQL_USER=postgres
-      - POSTGRESQL_PASSWORD=pgsql@cybergate
       - POSTGRESQL_HOST=postgresql
       - POSTGRESQL_PORT_NUMBER=5432
       - SMTP_HOST=hasuna.openemail.io
