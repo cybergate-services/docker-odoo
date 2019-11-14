@@ -8,6 +8,9 @@ services:
       - ALLOW_EMPTY_PASSWORD=no
     volumes:
       - 'postgresql_data:/bitnami/postgresql'
+    restart: always
+    
+volumes:
   odoo:
     image: 'bitnami/odoo:12'
     container_name: odoo
@@ -31,6 +34,7 @@ services:
       - SMTP_PROTOCOL=ssl
     depends_on:
       - postgresql
+    restart: always
 volumes:
   postgresql_data:
     driver: local
