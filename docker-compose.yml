@@ -1,0 +1,34 @@
+version: '2'
+services:
+  postgresql:
+    image: 'bitnami/postgresql:11'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
+  odoo:
+    image: 'bitnami/odoo:12'
+    ports:
+      - '80:8069'
+      - '443:8071'
+    volumes:
+      - 'odoo_data:/bitnami'
+    environment:
+      - ODOO_EMAIL=odoo@openemail.io
+      - ODOO_PASSWORD=odoo@cybergate
+      - POSTGRESQL_USER=postgres
+      - POSTGRESQL_PASSWORD=pgsql@cybergate
+      - POSTGRESQL_HOST=postgresql
+      - POSTGRESQL_PORT_NUMBER=5432
+      - SMTP_HOST=hasuna.openemail.io
+      - SMTP_PORT=465
+      - SMTP_USER=odoo@openemail.io
+      - SMTP_PASSWORD=odoo@cybergate
+      - SMTP_PROTOCOL=ssl
+    depends_on:
+      - postgresql
+volumes:
+  postgresql_data:
+    driver: local
+  odoo_data:
+    driver: local
