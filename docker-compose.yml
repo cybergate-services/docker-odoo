@@ -7,6 +7,8 @@ services:
     hostname: postgresql
     volumes:
       - './postgresql_data:/bitnami/postgresql'
+    environment:
+      - POSTGRESQL_PASSWORD=pgsql@cybergate
     restart: always
     
   odoo:
